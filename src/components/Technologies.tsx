@@ -1,47 +1,21 @@
 import React from 'react';
-import { 
-  Code, 
-  FileJson, 
-  Atom, 
-  Zap, 
-  Palette, 
-  Globe, 
-  BarChart, 
-  Server, 
-  FileCode, 
-  Database, 
-  Table, 
-  GitBranch, 
-  Github, 
-  GitCommit, 
-  Container, 
-  Terminal, 
-  Rocket, 
-  Bot, 
-  Link
-} from 'lucide-react';
 
 const skills = [
-  { icon: <Code />, name: "JavaScript" },
-  { icon: <FileJson />, name: "TypeScript" },
-  { icon: <Atom />, name: "React" },
-  { icon: <Zap />, name: "Next.js" },
-  { icon: <Palette />, name: "Tailwind CSS" },
-  { icon: <Globe />, name: "Webix JS" },
-  { icon: <BarChart />, name: "Ext JS" },
-  { icon: <Server />, name: "Node.js" },
-  { icon: <FileCode />, name: "PHP" },
-  { icon: <Database />, name: "MongoDB" },
-  { icon: <Table />, name: "MySQL" },
-  { icon: <GitBranch />, name: "Prisma" },
-  { icon: <GitCommit />, name: "Git" },
-  { icon: <Github />, name: "GitHub" },
-  { icon: <GitCommit />, name: "SVN" },
-  { icon: <Container />, name: "Docker" },
-  { icon: <Terminal />, name: "VS Code" },
-  { icon: <Rocket />, name: "Astro" },
-  { icon: <Bot />, name: "OpenAI" },
-  { icon: <Link />, name: "Langchain" },
+  { icon: "devicon-python-plain-wordmark colored", name: "Python" },
+  { icon: "devicon-javascript-plain colored", name: "JavaScript" },
+  { icon: "devicon-typescript-plain colored", name: "TypeScript" },
+  { icon: "devicon-go-plain-wordmark colored", name: "Go" },
+  { icon: "devicon-react-plain-wordmark colored", name: "React" },
+  { icon: "devicon-nodejs-plain-wordmark colored", name: "Node.js" },
+  { icon: "devicon-openapi-plain colored", name: "OpenAI" },
+  { icon: "devicon-mongodb-plain-wordmark colored", name: "MongoDB" },
+  { icon: "devicon-flask-plain-wordmark colored", name: "Flask" },
+  { icon: "devicon-mysql-plain-wordmark colored", name: "MySQL" },
+  { icon: "devicon-postgresql-plain-wordmark colored", name: "PostgreSQL" },
+  { icon: "devicon-git-plain-wordmark colored", name: "Git" },
+  { icon: "devicon-azure-plain colored", name: "Azure" },
+  { icon: "devicon-docker-plain-wordmark colored", name: "Docker" },
+  { icon: "devicon-tailwindcss-plain-wordmark colored", name: "Tailwind CSS" },
 ];
 
 const Technologies: React.FC = () => {
@@ -50,13 +24,8 @@ const Technologies: React.FC = () => {
       <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white text-center">Technologies</h2>
       <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {skills.map((skill, index) => (
-          <li 
-            key={index}
-            className="flex flex-col items-center p-4 rounded-lg bg-gray-100 dark:bg-gray-700 transition-all duration-300 hover:bg-gray-200 dark:hover:bg-gray-600 hover:scale-105 transform"
-          >
-            <div className="text-gray-600 dark:text-gray-300 mb-2">
-              {React.cloneElement(skill.icon, { size: 24 })}
-            </div>
+          <li key={index} className="flex flex-col items-center p-4 rounded-lg bg-gray-100 dark:bg-gray-700 transition-all duration-300 hover:bg-gray-200 dark:hover:bg-gray-600 hover:scale-105 transform">
+            <i className={`${skill.icon} text-2xl mb-2 text-gray-600 dark:text-gray-300`}></i>
             <span className="text-sm font-medium text-gray-700 dark:text-gray-300 text-center">{skill.name}</span>
           </li>
         ))}

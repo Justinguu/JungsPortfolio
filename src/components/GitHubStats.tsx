@@ -30,7 +30,15 @@ interface UserData {
   bio: string | null;
 }
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
+const customLanguages = [
+  { name: "Python", value: 40 },
+  { name: "JavaScript", value: 25 },
+  { name: "TypeScript", value: 15 },
+  { name: "Go", value: 10 },
+  { name: "HTML/CSS", value: 10 }
+];
+
+const COLORS = ['#3776AB', '#6E5494', '#3178C6', '#00ADD8', '#E34F26'];
 
 const GitHubStats: React.FC = () => {
   const [userData, setUserData] = useState<UserData | null>(null);
@@ -109,10 +117,10 @@ const GitHubStats: React.FC = () => {
   const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
 
   const stats = [
-    { label: 'Repositories', value: userData?.public_repos || 0 },
-    { label: 'Stars', value: totalStars },
-    { label: 'Followers', value: userData?.followers || 0 },
-    { label: 'Following', value: userData?.following || 0 },
+    { label: 'Repositories', value: 23 },
+    { label: 'Stars', value: 10 },
+    { label: 'Followers', value: 20 },
+    { label: 'Following', value: 25 },
   ];
 
   return (
