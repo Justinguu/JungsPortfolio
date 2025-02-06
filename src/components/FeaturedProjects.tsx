@@ -35,7 +35,7 @@ const ProjectsDisplay: React.FC = () => {
     const fetchProjects = async () => {
       try {
         // Fetch more repositories initially to ensure we get the most starred ones
-        const response = await githubService.getRepositories('medevs', {
+        const response = await githubService.getRepositories('Justinguu', {
           sort: 'stars',
           direction: 'desc',
           per_page: 10 // Fetch more repos initially

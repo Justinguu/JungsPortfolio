@@ -1,9 +1,16 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import heroImage from "@/assets/Justin.jpeg";
-import { Twitter, GithubIcon, Linkedin } from 'lucide-react';
+import { Twitter, GithubIcon, Linkedin, Download } from 'lucide-react';
 
 const AboutMe: React.FC = () => {
+  const handleDownloadResume = () => {
+    const resumeUrl = '/Jung-Gu-Resume.pdf';
+    window.open(resumeUrl, '_blank');
+  };
+
   return (
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl md:col-span-3 lg:col-span-4">
       <div className="p-6">
@@ -22,13 +29,22 @@ const AboutMe: React.FC = () => {
             <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
               AI? Oh, that&apos;s my jam. I geek out on building software that taps into AI magic.
             </p>
-            <div className="flex justify-center sm:justify-start space-x-4">
-              <a href="https://github.com/Justinguu" target='_blank' className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">
-                <GithubIcon className="w-6 h-6" />
-              </a>
-              <a href="https://linkedin.com/in/jung-gu" target='_blank' className="text-blue-700 hover:text-blue-800 transition-colors duration-300">
-                <Linkedin className="w-6 h-6" />
-              </a>
+            <div className="flex justify-between sm:justify-between items-center">
+              <div className="flex space-x-4">
+                <a href="https://github.com/Justinguu" target='_blank' className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">
+                  <GithubIcon className="w-6 h-6" />
+                </a>
+                <a href="https://linkedin.com/in/jung-gu" target='_blank' className="text-blue-700 hover:text-blue-800 transition-colors duration-300">
+                  <Linkedin className="w-6 h-6" />
+                </a>
+              </div>
+              <button 
+                onClick={handleDownloadResume}
+                className="flex items-center space-x-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors duration-300"
+              >
+                <Download className="w-5 h-5" />
+                <span>Download Resume</span>
+              </button>
             </div>
           </div>
         </div>

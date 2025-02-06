@@ -7,12 +7,8 @@ interface Language {
 }
 
 const languages: Language[] = [
-  { name: 'English', level: 'Fluent', flag: '🇬🇧' },
-  { name: 'German', level: 'Fluent', flag: '🇩🇪' },
-  { name: 'French', level: 'Fluent', flag: '🇫🇷' },
-  { name: 'Tamazight', level: 'Native', flag: 'ⵣ' },
-  { name: 'Arabic', level: 'Fluent', flag: '🇲🇦' },
-  { name: 'Spanish', level: 'Learning', flag: '🇪🇸' },
+  { name: 'English', level: 'Native', flag: '🇬🇧' },
+  { name: 'Korean', level: 'Native', flag: '🇰🇷' },
 ];
 
 interface LanguageCardProps {
