@@ -117,10 +117,10 @@ const GitHubStats: React.FC = () => {
   const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
 
   const stats = [
-    { label: 'Repositories', value: 23 },
-    { label: 'Stars', value: 10 },
-    { label: 'Followers', value: 20 },
-    { label: 'Following', value: 25 },
+    { label: 'Repositories', value: 47 },
+    { label: 'Stars', value: 9 },
+    { label: 'Followers', value: 14 },
+    { label: 'Following', value: 11 },
   ];
 
   return (
@@ -138,7 +138,7 @@ const GitHubStats: React.FC = () => {
         <ResponsiveContainer width="100%" height={200}>
           <PieChart>
             <Pie
-              data={languages}
+              data={customLanguages}
               cx="50%"
               cy="50%"
               outerRadius={60}
@@ -146,7 +146,7 @@ const GitHubStats: React.FC = () => {
               dataKey="value"
               label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
             >
-              {languages.map((entry, index) => (
+              {customLanguages.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
