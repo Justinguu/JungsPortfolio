@@ -33,7 +33,7 @@ const ProjectsGrid: React.FC = () => {
   const fetchProjects = async () => {
     setLoading(true);
     try {
-      const username = 'medevs';
+      const username = process.env.GITHUB_USERNAME || 'Justinguu';
 
       const { data: allRepos } = await githubService.getRepositories(username, {
         per_page: 100,
