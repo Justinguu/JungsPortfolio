@@ -15,7 +15,7 @@ const LatestPosts: React.FC = async () => {
           <BookOpen className="w-6 h-6 mr-2 text-blue-500" />
           Latest Posts
         </h2>
-      </div>
+      </div> 
       <ul className="divide-y divide-gray-200 dark:divide-gray-700 flex-grow">
         {latestPosts.map((post: PostData) => (
           <li key={post.id} className="group">
