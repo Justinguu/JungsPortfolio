@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request) {
   try {
-    const { searchParams } = new URL(request.url);
+    const searchParams = new URLSearchParams(request.url.split('?')[1]);
     const page = parseInt(searchParams.get('page') || '1', 10);
     const perPage = 6;
 
