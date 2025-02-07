@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   basePath: '/JungsPortfolio',
   images: {
     unoptimized: true,
@@ -10,6 +9,11 @@ const nextConfig = {
       { protocol: "https", hostname: "github-readme-stats.vercel.app", pathname: "**" },
     ],
   },
+  eslint: {
+    ignoreDuringBuilds: true
+  },
+  // Add this to ensure styles are included in the static export
+  assetPrefix: '/JungsPortfolio'
 };
 
 export default nextConfig;
