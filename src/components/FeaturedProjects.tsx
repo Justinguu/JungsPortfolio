@@ -25,87 +25,92 @@ interface GithubRepo {
   updated_at: string;
   topics: string[];
 }
-
 const ProjectsDisplay: React.FC = () => {
   const [projects, setProjects] = useState<ProjectCardProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchProjects = async () => {
+    const fetchPinnedProjects = async () => {
       try {
-        // Fetch more repositories initially to ensure we get the most starred ones
-        const response = await githubService.getRepositories('Justinguu', {
-          sort: 'stars',
-          direction: 'desc',
-          per_page: 10 // Fetch more repos initially
+        const query = `{
+          user(login: "Justinguu") {
+            pinnedItems(first: 6, types: REPOSITORY) {
+              nodes {
+                ... on Repository {
+                  name
+                  description
+                  url
+                  homepageUrl
+                  stargazerCount
+                  forkCount
+                  updatedAt
+                  repositoryTopics(first: 10) {
+                    nodes {
+                      topic {
+                        name
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }`;
+
+        const response = await fetch('https://api.github.com/graphql', {
+          method: 'POST',
+          headers: {
+            'Authorization': `bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ query }),
         });
 
-        const repos = response.data;
-        
-        // Double check sorting by stars and take top 4
-        const sortedRepos = repos
-          .sort((a, b) => (b.stargazers_count ?? 0) - (a.stargazers_count ?? 0))
-          .slice(0, 4);
+        const data = await response.json();
+        const pinnedRepos = data.data.user.pinnedItems.nodes;
 
-        const formattedProjects = sortedRepos.map((repo) => ({
+        const formattedProjects = pinnedRepos.map((repo: any) => ({
           title: repo.name,
           description: repo.description || 'No description available',
-          technologies: repo.topics || [],
-          githubLink: repo.html_url,
-          liveLink: repo.homepage || '',
-          stars: repo.stargazers_count ?? 0,
-          forks: repo.forks_count ?? 0,
-          lastUpdated: repo.updated_at ?? new Date().toISOString()
+          technologies: repo.repositoryTopics.nodes.map((topic: any) => topic.topic.name),
+          githubLink: repo.url,
+          liveLink: repo.homepageUrl || '',
+          stars: repo.stargazerCount,
+          forks: repo.forkCount,
+          lastUpdated: repo.updatedAt
         }));
 
         setProjects(formattedProjects);
-        setLoading(false);
       } catch (err) {
-        console.error('Error fetching GitHub projects:', err);
-        setError('Failed to load projects');
+        setError('Failed to load pinned projects');
+      } finally {
         setLoading(false);
       }
     };
 
-    fetchProjects();
+    fetchPinnedProjects();
   }, []);
 
   if (loading) {
     return (
-      <div className="rounded-lg shadow-md p-6 bg-[#151B28]">
-        <div className="animate-pulse space-y-4">
-          <div className="h-6 bg-gray-700 rounded w-1/4"></div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="h-48 bg-gray-700 rounded"></div>
-            ))}
-          </div>
-        </div>
+      <div className="flex justify-center items-center h-64">
+        <div className="animate-spin text-indigo-500 w-12 h-12 border-4 border-current border-t-transparent rounded-full" />
       </div>
     );
   }
 
   if (error) {
-    return (
-      <div className="rounded-lg shadow-md p-6 bg-[#151B28]">
-        {error}
-      </div>
-    );
+    return <div className="text-red-500 text-center">{error}</div>;
   }
 
   return (
-    <div className="rounded-lg shadow-md bg-[#151B28]">
-      <div className="p-6">
-        <h2 className="text-2xl font-bold mb-6">Featured Projects</h2>
-        <div className="grid gap-6 sm:grid-cols-2">
-          {projects.map((project, index) => (
-            <ProjectCard 
-              key={project.title} 
-              {...project}
-            />
-          ))}
-        </div>
+    <div className="space-y-6 p-6 bg-gray-50 dark:bg-gray-900 rounded-lg shadow-lg">
+      <h2 className="text-3xl font-bold text-gray-800 dark:text-white">Featured Projects</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project, index) => (
+          <ProjectCard key={index} {...project} />
+        ))}
       </div>
     </div>
   );
