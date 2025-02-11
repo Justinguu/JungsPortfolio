@@ -18,7 +18,10 @@ const AboutMe: React.FC = () => {
           <Image
             src={heroImage}
             alt="Justin's profile picture"
-            className="rounded-full shadow-md h-32 w-32 object-cover object-center ring-4 ring-blue-500 dark:ring-blue-400"
+            className="rounded-full shadow-md object-cover object-center ring-4 ring-blue-500 dark:ring-blue-400"
+            width={130}
+            height={130}
+            quality={100}
           />
           <div className="flex-1 text-center sm:text-left">
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">Justin Gu</h1>
