@@ -5,6 +5,11 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request) {
   try {
+    const username = process.env.GITHUB_USERNAME;
+    if (!username) {
+      return NextResponse.json({ error: 'GitHub username not configured' }, { status: 400 });
+    }
+
     const searchParams = new URLSearchParams(request.url.split('?')[1]);
     const page = parseInt(searchParams.get('page') || '1', 10);
     const perPage = 6;
@@ -24,14 +29,6 @@ export async function GET(request: Request) {
     return NextResponse.json(response.data.items);
   } catch (error) {
     console.error('Error in /api/github/trends:', error);
-    return NextResponse.json({ error: 'Failed to fetch trending repositories' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to fetch trends' }, { status: 500 });
   }
-}
-
-export async function GETFavicon() {
-  const response = await fetch(new URL('/favicon.ico', 'https://justinguu.github.io'))
-  const blob = await response.blob()
-  return new NextResponse(blob, {
-    headers: { 'Content-Type': 'image/x-icon' },
-  })
 }
