@@ -27,3 +27,11 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Failed to fetch trending repositories' }, { status: 500 });
   }
 }
+
+export async function GETFavicon() {
+  const response = await fetch(new URL('/favicon.ico', 'https://justinguu.github.io'))
+  const blob = await response.blob()
+  return new NextResponse(blob, {
+    headers: { 'Content-Type': 'image/x-icon' },
+  })
+}

@@ -14,7 +14,12 @@ const nextConfig = {
     ignoreDuringBuilds: true
   },
   // Add this to ensure styles are included in the static export
-  assetPrefix: '/JungsPortfolio'
+  assetPrefix: '/JungsPortfolio',
+  // Add these configurations
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false, path: false };
+    return config;
+  }
 };
 
 export default nextConfig;
