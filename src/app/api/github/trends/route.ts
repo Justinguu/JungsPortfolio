@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
 import { githubService } from '@/lib/github';
 
-export const dynamic = 'force-dynamic';
-
 export async function GET(request: Request) {
   try {
     const username = process.env.GITHUB_USERNAME;
