@@ -8,7 +8,7 @@ import GitHubStats from '@/components/GitHubStats';
 import Timeline from '@/components/Timeline';
 import Languages from '@/components/Languages';
 import Hobbies from '@/components/Hobbies';
-
+ 
 const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen p-4 md:p-8">
