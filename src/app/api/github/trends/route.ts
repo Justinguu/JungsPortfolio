@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { githubService } from '@/lib/github';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: Request) {
   try {
     const username = process.env.GITHUB_USERNAME;
@@ -8,7 +10,7 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: 'GitHub username not configured' }, { status: 400 });
     }
 
-    const searchParams = new URLSearchParams(request.url.split('?')[1]);
+    const { searchParams } = new URL(request.url);
     const page = parseInt(searchParams.get('page') || '1', 10);
     const perPage = 6;
 
