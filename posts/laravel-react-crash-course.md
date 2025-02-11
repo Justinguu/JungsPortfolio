@@ -1,4 +1,14 @@
-# Containers vs. Serverless Functions: Understanding the Differences and Choosing the Right Tool
+---
+title: "Containers vs Serverless: A Comprehensive Comparison"
+date: "2024-03-20"
+description: "An in-depth look at the differences between container-based and serverless architectures"
+author: "Justin Gu"
+category: "Cloud Computing"
+tags: ["Containers", "Serverless", "AWS", "Docker", "Cloud"]
+readTime: "5 min read"
+---
+
+# Containers vs Serverless: A Comprehensive Comparison
 
 In the ever-evolving landscape of cloud computing, two technologies have emerged as game-changers: **containers** and **serverless functions**. While both enable efficient application deployment, they cater to distinct use cases and architectural needs. This article breaks down their differences, strengths, and ideal scenarios to help you decide which solution fits your project best.
 
@@ -6,12 +16,12 @@ In the ever-evolving landscape of cloud computing, two technologies have emerged
 
 ## What Are Containers?
 
-Containers are lightweight, portable units that package an application’s code, dependencies, and runtime environment into a single executable package. Popularized by tools like **Docker** and orchestrated via platforms like **Kubernetes**, containers virtualize the operating system (OS) to run consistently across environments.
+Containers are lightweight, portable units that package an application's code, dependencies, and runtime environment into a single executable package. Popularized by tools like **Docker** and orchestrated via platforms like **Kubernetes**, containers virtualize the operating system (OS) to run consistently across environments.
 
 ### Key Features:
 - **Isolation:** Each container runs in its own isolated environment, sharing the host OS kernel.
 - **Portability:** "Build once, run anywhere" eliminates the "it works on my machine" problem.
-- **Resource Efficiency:** Lightweight compared to virtual machines (VMs), as they don’t require a full OS.
+- **Resource Efficiency:** Lightweight compared to virtual machines (VMs), as they don't require a full OS.
 - **Long-Running Processes:** Ideal for applications that need to stay active (e.g., web servers, databases).
 
 ### Common Use Cases:
@@ -103,7 +113,7 @@ Many modern architectures combine containers and serverless:
 - You prioritize speed, scalability, and cost-efficiency for short-lived tasks.
 - Your workload is unpredictable or event-driven.
 
-Ultimately, the choice hinges on your application’s requirements. For many organizations, a hybrid approach leveraging both technologies unlocks agility and resilience in the cloud era.
+Ultimately, the choice hinges on your application's requirements. For many organizations, a hybrid approach leveraging both technologies unlocks agility and resilience in the cloud era.
 
 ---
 
