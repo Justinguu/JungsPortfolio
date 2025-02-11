@@ -6,6 +6,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 import { Home, Briefcase, BookOpen, Github, FileText } from "lucide-react";
+import Image from "next/image";
+import favicon from "@/app/favicon.ico";
 
 const navLinks = [
   { name: "Home", href: "/", icon: Home },
@@ -22,7 +24,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="text-3xl font-bold">
-              ⵣ
+              <Image src={favicon} alt="Logo" width={32} height={32} />
             </Link>
           </div>
           <div className="hidden md:block">
