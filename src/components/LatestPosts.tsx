@@ -9,7 +9,7 @@ const LatestPosts: React.FC = async () => {
   const latestPosts = allPosts.slice(0, 3); // Get the first 3 posts
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col h-full">
+    <div className="bg-[#F8FAFC] dark:[#151B28] rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col h-full">
       <div className="p-6 border-b border-gray-200 dark:border-gray-700">
         <h2 className="text-2xl font-bold flex items-center text-gray-800 dark:text-white">
           <BookOpen className="w-6 h-6 mr-2 text-blue-500" />

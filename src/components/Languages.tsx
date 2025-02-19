@@ -18,7 +18,7 @@ interface LanguageCardProps {
 
 const LanguageCard: React.FC<LanguageCardProps> = ({ language, index }) => (
   <div 
-    className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-2 flex items-center space-x-4 transform hover:scale-105 transition duration-300 ease-in-out"
+    className="bg-[#F8FAFC] dark:bg-[#151B28] rounded-lg shadow-lg p-2 flex items-center space-x-4 transform hover:scale-105 transition duration-300 ease-in-out"
     style={{ animationDelay: `${index * 100}ms` }}
   >
     <span className="text-3xl">{language.flag}</span>

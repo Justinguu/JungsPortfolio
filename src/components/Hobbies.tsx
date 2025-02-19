@@ -25,14 +25,13 @@ interface HobbyCardProps {
 
 const HobbyCard: React.FC<HobbyCardProps> = ({ hobby, index }) => (
   <div
-    className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 flex flex-col items-center justify-center transform hover:scale-105 transition duration-300 ease-in-out"
+    className="border border-solid border-[#e5e7eb] rounded-lg shadow-lg p-10 flex flex-col items-center justify-center transform hover:scale-105 transition duration-300 ease-in-out min-h-[180px] w-[120px]"
     style={{ animationDelay: `${index * 100}ms` }}
   >
-    <span className="text-4xl mb-2">{hobby.icon}</span>
-    <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{hobby.name}</h3>
+    <span className="text-5xl mb-4">{hobby.icon}</span>
+    <h2 className="text-xl font-semibold text-gray-800 dark:text-white max-w-[150px] text-center">{hobby.name}</h2>
   </div>
 );
-
 const Hobbies: React.FC = () => {
   return (
     <div>
