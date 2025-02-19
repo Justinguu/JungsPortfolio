@@ -87,7 +87,7 @@ const GitHubStats: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex-grow">
+      <div className="border border-solid border-[#e5e7eb] p-6 rounded-lg shadow-md flex-grow">
         <div className="animate-pulse space-y-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             {[1, 2, 3, 4].map((i) => (
